@@ -27,4 +27,13 @@ getDepartmentSalary() {
 console.log(Department.addEmployee);
 console.log(Department.getDepartmentSalary);
 // Task 3: Create a Manager Class that Inherits from Employee
-
+class Manager extends Employee {
+    constructor (name,salary,position,department,bonus) {
+    super(name,salary,position,department);
+    this.bonus = bonus;
+    }
+getDetails() {
+   return `${super.getDetails()},${this.bonus}`
+}
+}
+console.log(Manager.getDetails);
