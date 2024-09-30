@@ -19,7 +19,7 @@ class Department {
 addEmployee(employee) {
     return this.employees.push(employee)
 }
-getDepartmentSalary() {
+getDepartmentSalary(employee) {
     return this.employees.reduce((acc,salary) =>  acc + employee.salary,0)
     
 }
@@ -37,3 +37,8 @@ getDetails() {
 }
 }
 console.log(Manager.getDetails);
+// Task 4: Handle Bonuses for Managers
+Department.prototype.calculateTotalSalaryWithBonus = function() {
+    return console.log(getDepartmentSalary() += this.bonus)
+};
+console.log(Department.calculateTotalSalaryWithBonus)
