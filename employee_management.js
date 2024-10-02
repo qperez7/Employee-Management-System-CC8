@@ -6,9 +6,10 @@ class Employee {
         this.position = position;
         this.department = department;
 }
+// Stores information in the Employee Class
 getDetails() {
 console.log( `${this.name},${this.position},${this.salary},${this.department}`)
-}}
+}} 
 
 // Task 2: Create a Department Class
 class Department {
@@ -16,11 +17,12 @@ class Department {
         this.name = name;
         this.employees = [];
     }
+// Adds employee and calculates department salary
 addEmployee(employee) {
     console.log (this.employees.push(employee))
 }
 getDepartmentSalary() {
-    console.log( this.employees.reduce((acc,salary) =>  acc + Employee.salary,0))
+    console.log( this.employees.reduce((acc,employee) =>  acc + employee.salary,0)); 
     
 }
 };
@@ -31,6 +33,7 @@ class Manager extends Employee {
     super(name,salary,position,department);
     this.bonus = bonus;
     }
+// Pulls from Employee class into Manager Class and adds bonus
 getDetails() {
    console.log( `${super.getDetails()},${this.bonus}`)
 }
@@ -38,7 +41,9 @@ getDetails() {
 
 // Task 4: Handle Bonuses for Managers
 Department.prototype.calculateTotalSalaryWithBonus = function() {
-     console.log(this.employees.reduce((acc,salary) =>  acc + Employee.salary +this.bonus,0))
+     console.log(this.employees.reduce((acc,employee) =>  {
+    let bonus = employee instanceof Manager ? employee.bonus : 0;
+    return acc + employee.salary + bonus; },0)); // Returns salary plus bonus for Managers
 };
 
 
@@ -61,7 +66,7 @@ marketing.addEmployee(bob);
 marketing.addEmployee(diana);
 
 // Calculate total salary for each department
-console.log(`Total salary for Engineering: $${engineering.getDepartmentSalary()}`);
-console.log(`Total salary with bonuses for Engineering: $${engineering.calculateTotalSalaryWithBonus()}`);
-console.log(`Total salary for Marketing: $${marketing.getDepartmentSalary()}`);
-console.log(`Total salary with bonuses for Marketing: $${marketing.calculateTotalSalaryWithBonus()}`);
+console.log(`Total salary for Engineering: $${engineering.getDepartmentSalary()}`); // Output: 200000
+console.log(`Total salary with bonuses for Engineering: $${engineering.calculateTotalSalaryWithBonus()}`); // Output: 220000
+console.log(`Total salary for Marketing: $${marketing.getDepartmentSalary()}`); // Output: 205000
+console.log(`Total salary with bonuses for Marketing: $${marketing.calculateTotalSalaryWithBonus()}`); //Output: 230000
