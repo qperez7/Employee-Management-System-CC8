@@ -8,7 +8,7 @@ class Employee {
 }
 // Stores information in the Employee Class
 getDetails() {
-console.log( `${this.name},${this.position},${this.salary},${this.department}`)
+return ( `${this.name},${this.position},${this.salary},${this.department}`)
 }} 
 
 // Task 2: Create a Department Class
@@ -19,10 +19,10 @@ class Department {
     }
 // Adds employee and calculates department salary
 addEmployee(employee) {
-    console.log (this.employees.push(employee))
+    return (this.employees.push(employee))
 }
 getDepartmentSalary() {
-    console.log( this.employees.reduce((acc,employee) =>  acc + employee.salary,0)); 
+    return( this.employees.reduce((acc,employee) =>  acc + employee.salary,0)); 
     
 }
 };
@@ -35,13 +35,13 @@ class Manager extends Employee {
     }
 // Pulls from Employee class into Manager Class and adds bonus
 getDetails() {
-   console.log( `${super.getDetails()},${this.bonus}`)
+   return( `${super.getDetails()},${this.bonus}`)
 }
 }
 
 // Task 4: Handle Bonuses for Managers
 Department.prototype.calculateTotalSalaryWithBonus = function() {
-     console.log(this.employees.reduce((acc,employee) =>  {
+     return (this.employees.reduce((acc,employee) =>  {
     let bonus = employee instanceof Manager ? employee.bonus : 0;
     return acc + employee.salary + bonus; },0)); // Returns salary plus bonus for Managers
 };
