@@ -46,7 +46,7 @@ getDetails() {
 }
 
 // Task 4: Handle Bonuses for Managers
-// This was added to the Development class
+// This was added to the Department class (Task 2)
 
 
 
