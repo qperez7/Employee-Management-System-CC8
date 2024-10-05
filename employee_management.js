@@ -25,7 +25,13 @@ getDepartmentSalary() {
     return( this.employees.reduce((acc,employee) =>  acc + employee.salary,0)); 
     
 }
-};
+// Added new method directly into Department Class as required in Task 4
+ calculateTotalSalaryWithBonus() {
+
+    return (this.employees.reduce((acc,employee) =>  {
+   let bonus = employee instanceof Manager ? employee.bonus : 0;
+   return acc + employee.salary + bonus; },0)); // Returns salary plus bonus for Managers
+}};
 
 // Task 3: Create a Manager Class that Inherits from Employee
 class Manager extends Employee {
@@ -40,11 +46,8 @@ getDetails() {
 }
 
 // Task 4: Handle Bonuses for Managers
-Department.prototype.calculateTotalSalaryWithBonus = function() {
-     return (this.employees.reduce((acc,employee) =>  {
-    let bonus = employee instanceof Manager ? employee.bonus : 0;
-    return acc + employee.salary + bonus; },0)); // Returns salary plus bonus for Managers
-};
+// This was added to the Development class
+
 
 
 //Task 5: Create and Manage Departments and Employees
